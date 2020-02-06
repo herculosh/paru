@@ -1,0 +1,19 @@
+settings:
+  follow-links: false
+  recursive: true
+  match-files: 'all'
+  skip: ['*.jpg','*.pygtex','*.png','**/temp/**', '*.pdf', '*.pptx']
+templates:
+  test-pdf-opt:
+    glob: ['test_pdf_engine_opts_yaml.md']
+    pandoc:
+      from: markdown
+      to: pdf
+      variable:
+        - "classoption=t" # Make all Text on top.
+      pdf-engine: latexmk
+      pdf-engine-opt: 
+        - "--shell-escape"
+        - "--outdir=temp"
+        - "--aux-directory=temp"
+        - "-lualatex"
